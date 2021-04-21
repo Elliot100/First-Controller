@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
     def index
-        render json: User.all
+        @users = User.all 
+        # render json: user
+        render :index
     end
 
     def create
@@ -14,9 +16,15 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by(id: params[:id])
+        @user = User.find_by(id: params[:id])
 
-        render json: user
+        # render :show
+        if @user
+            render :show
+        else
+            # render :index, below is using the prefix, or can use '/users' 
+            redirect_to users_url
+        end
     end
 
     def update

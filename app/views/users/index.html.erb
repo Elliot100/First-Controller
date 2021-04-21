@@ -1,0 +1,12 @@
+<h1>All the users!</h1>
+
+<%# ruby code that will not be printed%>
+<%#= ruby code that we want to render%> 
+
+
+<ul>
+    <% @users.each do |user| %>
+        <li><%= user.name %></li>
+
+    <% end %>
+</ul>
