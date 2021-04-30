@@ -6,7 +6,8 @@
 
 <ul>
     <% @users.each do |user| %>
-        <li><%= user.name %></li>
-
+        <li>
+        <a href="<%= user_url(user) %>"> <%= user.name %></a>
+        </li>
     <% end %>
 </ul>

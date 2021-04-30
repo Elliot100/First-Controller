@@ -11,6 +11,9 @@
 #  updated_at  :datetime         not null
 #
 class User < ApplicationRecord
-    validates :name, presence: true
-    validates :email, presence: true
+    validates :name, :email, presence: true
+   
+    # def year_not_in_future
+    #     errors[:year] << "cannot be in the future" unless year > 2016
+    # end
 end
