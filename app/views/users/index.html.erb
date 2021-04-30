@@ -8,6 +8,13 @@
     <% @users.each do |user| %>
         <li>
         <a href="<%= user_url(user) %>"> <%= user.name %></a>
+        
+        <%# want to add delete button, but forms can only make get/post %>
+        <form action="<%= user_url(user) %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete cat">
+       
+        </form>
         </li>
     <% end %>
 </ul>

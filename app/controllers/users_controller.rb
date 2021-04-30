@@ -26,13 +26,21 @@ class UsersController < ApplicationController
 
         if @user.save
             #show user hero show page
+            # cat_url(@cat) == /cats/(id)
             redirect_to user_url(@user)
         else
             #show user the new user form
-            render :new
+            render @user.errors.full_messages, status: :unprocessable_entity
         end
-
     end
+
+    # 1. GET /cats/new to fetch a form
+    # 2. user fills out the form, click submit
+    # 3. POST /cats the data in the form
+    # 4. Create actions is invoked, cat is created.
+    # 5. Send client a redirect to /cats/#{id}
+    # 6. Client makes a GET request for /cats/#{id}
+    # 7. show action for newly created cat is invoked
 
     def update
         user = User.find_by(id: params[:id])
@@ -48,10 +56,18 @@ class UsersController < ApplicationController
         user = User.find_by(id: params[:id])
 
         if user.destroy
-            render json: user
+            redirect_to users_url
         else
             render json: "Cannot destroy user, too important"
         end
+
+        # 1. GET /cats
+        # 2. Click delete button
+        # 3. Sends POST /cats/123; but _method="delete" so rails understands
+        #      to do a destroy
+        # 4. Destroys the cat. Issues a redirect to the client
+        # 5. CLients gets /cats again
+
     end 
 
     private
