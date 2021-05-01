@@ -5,12 +5,21 @@
 
 <%# action= also accepts users_url  %>
 <form action="/users" method="post">
-    <label for="username">Name</label>
-    <input id="username" type="text" name="user[name]">
+    <label for="user_name">Name</label>
+    <input id="user_name" 
+            type="text" 
+            name="user[name]"
+            value="<%= @user.name %>">
 
-    <label for="email">Email</label>
-    <input id="email" type="text" name="user[email]">
+    <br>
 
+    <label for="user_email">Email</label>
+    <input id="user_email" 
+            type="text" 
+            name="user[email]"
+            value="<%= @user.email %>">
 
-    <input type="submit" value="Add user to library">
+    <br>
+
+    <input type="submit" value="Add User">
 </form>

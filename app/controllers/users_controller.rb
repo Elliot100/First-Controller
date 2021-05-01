@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     end
 
     def new
+        @user = User.new
+
         render :new
     end
 
@@ -30,7 +32,8 @@ class UsersController < ApplicationController
             redirect_to user_url(@user)
         else
             #show user the new user form
-            render @user.errors.full_messages, status: :unprocessable_entity
+            render :new
+            # render @user.errors.full_messages, status: :unprocessable_entity
         end
     end
 
@@ -66,7 +69,7 @@ class UsersController < ApplicationController
         # 3. Sends POST /cats/123; but _method="delete" so rails understands
         #      to do a destroy
         # 4. Destroys the cat. Issues a redirect to the client
-        # 5. CLients gets /cats again
+        # 5. Client gets /cats again
 
     end 
 
