@@ -1,23 +1,22 @@
-<h1>All the users!</h1>
+<h1>All the pets!</h1>
 
 <%# ruby code that will not be printed%>
 <%#= ruby code that we want to render%> 
 
 
 <ul>
-    
-    <% @users.each do |user| %>
+    <% @pets.each do |pet| %>
         <li>
-        <a href="<%= user_url(user) %>"> <%= user.name %></a>
+        <a href="<%= pets_url(pet) %>"> <%= pet.name %></a>
         
         <%# want to add delete button, but forms can only make get/post %>
-        <form action="<%= user_url(user) %>" method="post">
+        <form action="<%= pet_url(pet) %>" method="post">
             <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="delete cat">
+            <input type="submit" value="delete pet">
        
         </form>
         </li>
     <% end %>
 </ul>
 
- <a href="<%= new_user_url %>">New User</a>
+ <a href="<%= new_pet_url %>">New Pet</a>

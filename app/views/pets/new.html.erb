@@ -1,0 +1,20 @@
+
+<h1>Add Pet to our database!!</h1>
+
+<%# action: url to which we want to send data  %>
+<%# method: http method that we want to use  %>
+
+<%# action= also accepts users_url  %>
+<form action="/pets" method="post">
+    <label for="pet_name">Name</label>
+    <input id="pet_name" 
+            type="text" 
+            name="pet[name]"
+            value="<%= @pet.name %>">
+
+    <br>
+
+    
+
+    <input type="submit" value="Create Pet">
+</form>

@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   # get 'users/new', to: 'users#new', as: 'new_user'
   # get 'users/:id/edit', to: 'users#edit', as: 'edit_user'
   
-  resources :users
+  resources :users do
+    resources :pets, only: :index
+  end
+
+  resources :pets
 end
