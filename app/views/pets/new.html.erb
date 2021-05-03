@@ -1,11 +1,13 @@
 
-<h1>Add Pet to our database!!</h1>
+<h1><%= @user.name %>'s New Pet</h1>
 
 <%# action: url to which we want to send data  %>
 <%# method: http method that we want to use  %>
 
 <%# action= also accepts users_url  %>
 <form action="/pets" method="post">
+    <input type="hidden" name=pet[user_id] value="<%= @user.id %>">
+
     <label for="pet_name">Name</label>
     <input id="pet_name" 
             type="text" 
@@ -14,7 +16,14 @@
 
     <br>
 
-    
+    <label for="pet_type">Type</label>
+    <select name="pet[ttype]" id="pet_ttype">
+    <% Pet::TYPE.each do |type|%>
+        <option value=<%= type %> <%= "selected" if @pet.ttype == type %>>
+        <%= type.upcase%>
+        </option>
+    <% end %>    
+    </select>
 
     <input type="submit" value="Create Pet">
 </form>

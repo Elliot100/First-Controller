@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   # get 'users/:id/edit', to: 'users#edit', as: 'edit_user'
   
   resources :users do
-    resources :pets, only: :index
+    resources :pets, only: [:index, :new]
   end
 
-  resources :pets
+  resources :pets, only: [:create, :show, :update, :destroy]
 end
